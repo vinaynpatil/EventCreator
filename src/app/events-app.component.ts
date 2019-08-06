@@ -3,10 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'events-app-root',
   template: `
-  <h2>
-    <event-list>
-    </event-list>
-  </h2>`
+    <nav-bar></nav-bar>
+    <events-list></events-list>`
 })
 export class EventsAppComponent {
   title = 'EventCreator';
