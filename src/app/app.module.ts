@@ -24,6 +24,7 @@ import { RouterModule } from '@angular/router'
 
 import { Error404Component } from './errors/404.component'
 
+
 @NgModule({
   declarations: [
     EventsAppComponent,
