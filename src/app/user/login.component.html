@@ -1,17 +1,23 @@
 <h1>Login</h1>
 <hr>
 <div class="col-md-4">
-  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off">
-    <div class="form-group" >
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)" autocomplete="off" novalidate>
+    <div class="form-group">
       <label for="userName">User Name:</label>
-      <input (ngModel)="userName" id="userName" name="userName" type="text" class="form-control" placeholder="User Name..." />
+      <em *ngIf="(loginForm.controls.userName?.touched || mouseOverLogin) && !loginForm.controls.userName?.valid">Required</em>
+      <input (ngModel)="userName" id="userName" name="userName" type="text" class="form-control"
+        placeholder="User Name..." required />
     </div>
-    <div class="form-group" >
+    <div class="form-group">
       <label for="password">Password:</label>
-      <input (ngModel)="password" id="password" name="password" type="password" class="form-control"placeholder="Password..." />
+      <em *ngIf="(loginForm.controls.password?.touched || mouseOverLogin) && !loginForm.controls.password?.valid">Required</em>
+      <input (ngModel)="password" id="password" name="password" type="password" class="form-control"
+        placeholder="Password..." required />
     </div>
-        
-    <button type="submit" class="btn btn-primary">Login</button>
-    <button type="button" class="btn btn-default">Cancel</button>
+
+    <span (mouseenter)="mouseOverLogin=true" (mouseleave)="mouseOverLogin=false">
+      <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary">Login</button>
+    </span>
+    <button type="button" [routerLink]="['/events']" class="btn btn-default">Cancel</button>
   </form>
 </div>
