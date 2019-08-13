@@ -37,7 +37,9 @@
     <div class="form-group" [ngClass]="{'error':abstract.invalid && abstract.dirty}">
       <label for="abstract">Abstract:</label>
       <em *ngIf="abstract.invalid && abstract.dirty && abstract.errors.required">Required</em>
-      <em *ngIf="abstract.invalid && abstract.dirty && abstract.errors.maxlength">Required</em>
+      <em *ngIf="abstract.invalid && abstract.dirty && abstract.errors.maxlength">Cannot exceed 400 Characters</em>
+      <em *ngIf="abstract.invalid && abstract.dirty && abstract.errors.restrictedWords">Restricted words
+        found: {{abstract.errors.restrictedWords}}</em>
       <textarea formControlName="abstract" id="abstract" rows=3 class="form-control"
         placeholder="abstract..."></textarea>
     </div>
