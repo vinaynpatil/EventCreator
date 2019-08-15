@@ -19,6 +19,8 @@ import { NavBarComponent } from './nav/navbar.component'
 
 import { ToastrService } from './common/toastr.service'
 
+import { CollapsibleWellComponent } from './common/collapsible-well.component'
+
 import { appRoutes } from './routes'
 
 import { RouterModule } from '@angular/router'
@@ -37,7 +39,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     CreateEventComponent,
     Error404Component,
     CreateSession,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     BrowserModule,
