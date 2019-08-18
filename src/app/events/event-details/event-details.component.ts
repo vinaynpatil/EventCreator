@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { EventService } from '../shared/event.service';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute, Params } from '@angular/router'
 import { IEvent, ISession } from '../shared';
 
 @Component({
@@ -21,8 +21,10 @@ export class EventDetailsComponent implements OnInit {
     constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
     ngOnInit() {
-        let id = this.route.snapshot.params['id'];
-        this.event = this.eventService.getEvent(+id);
+        this.route.params.subscribe((param: Params) => { // Can be relaced with this.route.params.forEach((param:Params) => {
+            this.event = this.eventService.getEvent(+param['id']);
+            this.addMode = false;
+        })
     }
 
     addSession() {
