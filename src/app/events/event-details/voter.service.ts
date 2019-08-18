@@ -5,9 +5,7 @@ import { ISession } from '../shared';
 export class VoterService {
 
     deleteVoter(session: ISession, username: string) {
-        session.voters = session.voters.filter(each => {
-            each != username;
-        })
+        session.voters = session.voters.filter(each => each !== username)
     }
 
     addVoter(session: ISession, username: string) {
