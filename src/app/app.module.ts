@@ -18,9 +18,14 @@ import { EventsAppComponent } from './events-app.component';
 
 import { NavBarComponent } from './nav/navbar.component'
 
-import { ToastrService } from './common/toastr.service'
-
-import { CollapsibleWellComponent } from './common/collapsible-well.component'
+import {
+  CollapsibleWellComponent,
+  JQ_TOKEN,
+  TOASTR_TOKEN,
+  Toastr,
+  SimpleModalComponent,
+  ModalTriggerDirective
+} from './common/index'
 
 import { appRoutes } from './routes'
 
@@ -29,6 +34,10 @@ import { RouterModule } from '@angular/router'
 import { Error404Component } from './errors/404.component'
 import { AuthService } from './user/auth.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+
+// Instead of declare to fix AOT cmplilation problem
+let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -42,7 +51,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
     CreateSession,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     BrowserModule,
@@ -52,8 +63,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
   ],
   providers: [
     EventService,
-    ToastrService,
-    EventRouteActivator,
+    {
+      provide: TOASTR_TOKEN,
+      useValue: toastr
+    },
+    {
+      provide: JQ_TOKEN,
+      useValue: jQuery
+    },
+    EventRouteActivator, // Long hand - {provide : EventRouteActivator, useClass: EventRouteActivator}
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
