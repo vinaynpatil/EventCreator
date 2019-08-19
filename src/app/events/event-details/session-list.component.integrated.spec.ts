@@ -1,9 +1,9 @@
-import { TestBed, async, ComponentFixture } from '@angular/core/testing'
-import { DebugElement } from '@angular/core'
-import { SessionListComponent, VoterService, UpvoteComponent } from '.'
-import { ISession, DurationPipe } from '../.'
-import { AuthService } from '../../user/auth.service'
-import { By } from '@angular/platform-browser'
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { SessionListComponent, VoterService, UpvoteComponent } from '.';
+import { ISession, DurationPipe } from '../.';
+import { AuthService } from '../../user/auth.service';
+import { By } from '@angular/platform-browser';
 import { CollapsibleWellComponent } from 'src/app/common';
 
 describe('SessionListComponent', () => {
@@ -12,14 +12,14 @@ describe('SessionListComponent', () => {
     let fixture: ComponentFixture<SessionListComponent>,
         component: SessionListComponent,
         element: HTMLElement,
-        debugEl: DebugElement
+        debugEl: DebugElement;
 
     beforeEach(async(() => {
-        let mockAuthService = {
+        const mockAuthService = {
             isAuthenticated: () => true,
             currentUser: { userName: 'Vinay' }
         };
-        let mockVoterService = {
+        const mockVoterService = {
             userHasVoted: () => true
         };
 
@@ -44,15 +44,15 @@ describe('SessionListComponent', () => {
                 }
             ],
             schemas: []
-        })
-    }))
+        });
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SessionListComponent);
         component = fixture.componentInstance;
         debugEl = fixture.debugElement;
         element = fixture.nativeElement;
-    })
+    });
 
     describe('Initial Display', () => {
         it('should have the correct session title', () => {
@@ -67,6 +67,6 @@ describe('SessionListComponent', () => {
             expect(element.querySelector('[well-title]').textContent).toContain('Session 1');
             // Alternative way using debugElement, which might be helpful when finding an element by its diretive,etc
             expect(debugEl.query(By.css('[well-title]')).nativeElement.textContent).toContain('Session 1');
-        })
-    })
-})
+        });
+    });
+});

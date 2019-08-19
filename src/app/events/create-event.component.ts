@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EventService } from './shared';
 
@@ -21,8 +21,8 @@ import { EventService } from './shared';
     ]
 })
 export class CreateEventComponent {
-    newEvent
-    isDirty: boolean = true;
+    newEvent;
+    isDirty = true;
 
     constructor(private route: Router, private eventService: EventService) { }
 
@@ -34,6 +34,6 @@ export class CreateEventComponent {
         this.eventService.saveEvent(formValues).subscribe(() => {
             this.isDirty = false;
             this.route.navigate(['/events']);
-        })
+        });
     }
 }

@@ -11,13 +11,13 @@ import { IEvent } from './shared';
         <div class="row">
             <div class="col-md-5" *ngFor="let event of events">
                 <event-thumbnail [event]="event"></event-thumbnail>
-            </div>    
-        </div>    
+            </div>
+        </div>
     </div>`
 })
 
 export class EventListComponent implements OnInit {
-    events: IEvent[]
+    events: IEvent[];
     constructor(private eventService: EventService, private route: ActivatedRoute) {
 
     }

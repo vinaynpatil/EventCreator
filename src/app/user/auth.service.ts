@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 
-import { IUser } from './user.model'
+import { IUser } from './user.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
 export class AuthService {
-    currentUser: IUser
+    currentUser: IUser;
 
     constructor(private http: HttpClient) { }
 
@@ -36,7 +36,7 @@ export class AuthService {
     updateCurrentUser(firstName: any, lastName: any) {
         this.currentUser.firstName = firstName;
         this.currentUser.lastName = lastName;
-        let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
         return this.http.put(`/api/users/${this.currentUser.id}`, this.currentUser, options);
     }
 
@@ -47,12 +47,12 @@ export class AuthService {
                     this.currentUser = <IUser>data;
                 }
             }))
-            .subscribe()
+            .subscribe();
     }
 
     logout() {
         this.currentUser = undefined;
-        let options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
         return this.http.post('/api/logout', {}, options);
     }
 }

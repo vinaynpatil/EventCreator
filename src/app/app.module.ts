@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 
 import {
   EventListComponent,
@@ -16,11 +16,11 @@ import {
   UpvoteComponent,
   VoterService,
   LocationValidator
-} from './events/index'
+} from './events/index';
 
 import { EventsAppComponent } from './events-app.component';
 
-import { NavBarComponent } from './nav/navbar.component'
+import { NavBarComponent } from './nav/navbar.component';
 
 import {
   CollapsibleWellComponent,
@@ -29,19 +29,19 @@ import {
   Toastr,
   SimpleModalComponent,
   ModalTriggerDirective
-} from './common/index'
+} from './common/index';
 
-import { appRoutes } from './routes'
+import { appRoutes } from './routes';
 
-import { RouterModule } from '@angular/router'
+import { RouterModule } from '@angular/router';
 
-import { Error404Component } from './errors/404.component'
+import { Error404Component } from './errors/404.component';
 import { AuthService } from './user/auth.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Instead of declare to fix AOT cmplilation problem
-let toastr: Toastr = window['toastr'];
-let jQuery = window['$'];
+const toastr: Toastr = window['toastr'];
+const jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -93,7 +93,7 @@ export class AppModule { }
 
 function checkDirtyState(component: CreateEventComponent) {
   if (component.isDirty) {
-    return window.confirm("You have not saved this event, do you really want to cancel?")
+    return window.confirm('You have not saved this event, do you really want to cancel?');
   }
   return true;
 }

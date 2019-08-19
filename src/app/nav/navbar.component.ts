@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { AuthService } from './../user/auth.service'
+import { AuthService } from './../user/auth.service';
 import { ISession, EventService, IEvent } from '../events';
 
 @Component({
@@ -25,7 +25,7 @@ import { ISession, EventService, IEvent } from '../events';
 })
 
 export class NavBarComponent implements OnInit {
-  searchTerm: string = "";
+  searchTerm = '';
   foundSessions: ISession[];
   events: IEvent[] = [];
 
@@ -35,7 +35,7 @@ export class NavBarComponent implements OnInit {
     this.eventService.getEvents()
       .subscribe(events => {
         this.events = events;
-      })
+      });
   }
 
   searchSessions() {
@@ -43,6 +43,6 @@ export class NavBarComponent implements OnInit {
       sessions => {
         this.foundSessions = sessions;
       }
-    )
+    );
   }
 }
