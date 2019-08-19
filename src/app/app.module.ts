@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 
 import {
   EventListComponent,
@@ -7,7 +8,7 @@ import {
   EventService,
   EventDetailsComponent,
   CreateEventComponent,
-  EventRouteActivator,
+  EventResolver,
   EventListResolver,
   CreateSession,
   SessionListComponent,
@@ -64,7 +65,8 @@ let jQuery = window['$'];
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     EventService,
@@ -76,7 +78,7 @@ let jQuery = window['$'];
       provide: JQ_TOKEN,
       useValue: jQuery
     },
-    EventRouteActivator, // Long hand - {provide : EventRouteActivator, useClass: EventRouteActivator}
+    EventResolver, // Long hand - {provide : EventRouteActivator, useClass: EventRouteActivator}
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState

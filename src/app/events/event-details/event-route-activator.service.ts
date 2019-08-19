@@ -4,6 +4,7 @@ import { EventService } from '../shared/event.service'
 
 @Injectable()
 export class EventRouteActivator implements CanActivate {
+    // This class is now has been replaced by resolver. Keeping this file active for reference.
     constructor(private events: EventService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot) {

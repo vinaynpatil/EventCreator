@@ -14,6 +14,7 @@ import { IEvent, ISession } from '../shared';
     `]
 })
 export class EventDetailsComponent implements OnInit {
+
     event: IEvent;
     addMode = false;
     filterBy: string = "all";
@@ -21,8 +22,8 @@ export class EventDetailsComponent implements OnInit {
     constructor(private eventService: EventService, private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.route.params.subscribe((param: Params) => { // Can be relaced with this.route.params.forEach((param:Params) => {
-            this.event = this.eventService.getEvent(+param['id']);
+        this.route.data.forEach(data => {
+            this.event = data['event'];
             this.addMode = false;
         })
     }
