@@ -36,4 +36,8 @@ export class CreateEventComponent {
             this.route.navigate(['/events']);
         });
     }
+
+    cancel() {
+        this.route.navigate(['/events']);
+    }
 }

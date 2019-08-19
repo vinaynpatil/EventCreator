@@ -19,7 +19,7 @@ import { Router } from '@angular/router';
 
 export class LoginComponent {
     userName;
-    passwords;
+    password;
     mouseOverLogin;
     loginInvalid = false;
 
