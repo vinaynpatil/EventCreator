@@ -20,4 +20,11 @@
     </span>
     <button type="button" [routerLink]="['/events']" class="btn btn-default">Cancel</button>
   </form>
+
+  <br/>
+
+  <div *ngIf="loginInvalid" class="alert alert-danger">
+    Invalid Login Info
+  </div>
+
 </div>
